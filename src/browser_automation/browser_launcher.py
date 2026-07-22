@@ -86,7 +86,9 @@ class BrowserLauncher:
                 pw_browser_type = self._get_playwright_browser_type(pw, browser_type)
 
                 launch_kwargs: dict = {"timeout": self.LAUNCH_TIMEOUT_MS, "headless": self.headless}
-                if browser_type == BrowserType.EDGE:
+                if browser_type == BrowserType.CHROMIUM:
+                    launch_kwargs["channel"] = "chrome"
+                elif browser_type == BrowserType.EDGE:
                     launch_kwargs["channel"] = "msedge"
 
                 try:
